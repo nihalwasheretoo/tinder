@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Route } from 'react-router';
+import {SettingsDrawer} from './Drawer.js';
+
 import './styles.css';
 
 export class LoginPage extends Component {
@@ -8,6 +11,8 @@ export class LoginPage extends Component {
 
        var username = document.getElementById('loginUserName').value;
        var password = document.getElementById('loginPassword').value;
+       var showProfile =  <Route exact path="/profile" component={SettingsDrawer} /> ;
+
 
        console.log('loginUserName : ' +username);
        console.log('loginPassword : ' +password);
@@ -34,6 +39,7 @@ export class LoginPage extends Component {
           console.log(myStatus);
           if(myStatus === 200){
             alert('Logged in...');
+            return showProfile;
             }
           else{
             alert('Please enter correct credentials...');
